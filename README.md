@@ -44,23 +44,24 @@ Forget SMB, SFTP, FTP, NFS, SCP, HTTP file servers, shared folders, or network m
 ```mermaid
 flowchart TD
 
-subgraph PeerA
-  A1[Share + Index Files]
-  A2[UDP Broadcast Announce]
+subgraph System-A
+  P1[Openfilenet Peer]
+  A1[UDP Broadcast Announce]
+  A2[Share Files]
   A3[TCP File Server]
 end
 
-subgraph PeerB
-  B1[Listen for UDP]
-  B2[Send Reply]
-  B3[Receive Announce Reply]
-  B4[Connect to TCP and Get Files]
+subgraph System-B
+  P2[Openfilenet Peer]
+  B1[Listen for UDP Broadcast]
+  B2[Connect to TCP and Get Files]
 end
 
-A2 -- "UDP Broadcast" --> B1
-B2 -- "UDP Reply" --> A2
-A2 -- "Announce Reply" --> B3
-B4 --> A3
+P1 --> A1
+A1 -- "UDP Broadcast" --> P2
+P2 --> B1
+B1 -- "UDP Reply" --> P1
+P1 -- "Announce Reply" --> P2
 
 ```
 
