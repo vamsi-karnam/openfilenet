@@ -47,7 +47,7 @@ flowchart TD
     A2["TF / Images / Numeric topics / Text / Audio / etc"]
   end
 
-  A1 --> A2
+  A1  A2
   A2 --> B["RDASH Agent (rclpy)"]
   B --> Z["HTTP/HTTPS (REST API): /api/push, /api/push_image, /api/push_tf, etc"] --> C["RDASH App (Flask + Socket.IO)"]
 
