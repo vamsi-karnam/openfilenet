@@ -50,14 +50,15 @@ subgraph PeerA["Peer A (Sender)"]
   A4[TCP Server]
 end
 
-subgraph peerB["Peer B (Receiver)"]
+subgraph PeerB["Peer B (Receiver)"]
   B1[list_files()] --> B2[Discovers Peer A]
   B3[get_files()] --> B4[Download file/Process bytes in-memory]
 end
 
-A3--UDP announce --> B1
-B1--UDP announce_reply --> A3
-B3--TCP get_file() --> A4
+A3 -- "UDP announce" --> B1
+B1 -- "UDP announce_reply" --> A3
+B3 -- "TCP get_file()" --> A4
+
 ```
 
 ---
