@@ -44,13 +44,13 @@ Forget SMB, SFTP, FTP, NFS, SCP, HTTP file servers, shared folders, or network m
 ```mermaid
 flowchart TD
 
-subgraph PeerA (Sender)
+subgraph Peer-A
   A1[share files] --> A2[Index files]
   A3[UDP Broadcast]
   A4[TCP Server]
 end
 
-subgraph PeerB (Receiver)
+subgraph Peer-B
   B1[list files] --> B2[Discovers Peer A]
   B3[get files] --> B4[Download file or process bytes in memory]
 end
