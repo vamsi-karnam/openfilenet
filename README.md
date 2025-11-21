@@ -40,6 +40,36 @@ Forget SMB, SFTP, FTP, NFS, SCP, HTTP file servers, shared folders, or network m
 
 ---
 
+```mermaid
+flowchart TD
+  subgraph "Robot / ROS2 Network"
+    A1["ROS2 Nodes (sensors, nav, etc.)"]
+    A2["TF / Images / Numeric topics / Text / Audio / etc"]
+  end
+
+  A1 --> A2
+  A2 --> B["RDASH Agent (rclpy)"]
+  B --> Z["HTTP/HTTPS (REST API): /api/push, /api/push_image, /api/push_tf, etc"] --> C["RDASH App (Flask + Socket.IO)"]
+
+  subgraph "Non-ROS Runtimes"
+    X1["Custom scripts / services / IoT Devices"]
+    X2["Images / Video / Numeric topics / Text / etc"]
+  end
+
+  X1 --> X2
+  X2 --> Y["HTTP clients (curl, Python requests, etc.)"]
+  Y --> Z
+
+  C -- "WebSocket" --> D["Browser Dashboard (JS ECharts)"]
+
+  subgraph Browser
+    D1["Charts / Graphs / Panels"]
+  end
+
+  D -->  D1
+```
+
+
 ## Architecture
 ```mermaid
 flowchart LR
