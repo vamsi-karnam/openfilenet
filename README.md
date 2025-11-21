@@ -45,19 +45,19 @@ Forget SMB, SFTP, FTP, NFS, SCP, HTTP file servers, shared folders, or network m
 flowchart LR
 
 subgraph PeerA["Peer A (Sender)"]
-  A1[share_files()]-->A2[Index files]
+  A1[share_files()] --> A2[Index files]
   A3[UDP Broadcast]
   A4[TCP Server]
 end
 
 sungraph peerB["Peer B (Receiver)"]
-  B1[list_files()-->B2[Discovers Peer A]
-  B3[get_files()]-->B4[Download file/Process bytes in-memory]
+  B1[list_files()] --> B2[Discovers Peer A]
+  B3[get_files()] --> B4[Download file/Process bytes in-memory]
 end
 
-A3--UDP announce-->B1
-B1--UDP announce_reply-->A3
-B3--TCP get_file()-->A4
+A3--UDP announce --> B1
+B1--UDP announce_reply --> A3
+B3--TCP get_file() --> A4
 ```
 
 ---
