@@ -156,28 +156,11 @@ Encryption affects only file transfer, not UDP discovery or metadata.
 
 ## Language support
 
-<table>
-  <thead>
-    <tr>
-      <th>Language</th>
-      <th>Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Python</strong></td>
-      <td>Implemented</td>
-    </tr>
-    <tr>
-      <td><strong>C</strong></td>
-      <td>Planned</td>
-    </tr>
-    <tr>
-      <td><strong>C++</strong></td>
-      <td>Planned</td>
-    </tr>
-  </tbody>
-</table>
+| Language | Status      |
+| -------- | ----------- |
+| Python   | Implemented |
+| C        | Planned     |
+| C++      | Planned     |
 
 ---
 
