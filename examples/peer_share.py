@@ -28,7 +28,7 @@ ofn.key = "secret"
 # Share a file or directory on the P2P network
 # -------------------------------------------------------------------
 # Change this to the absolute or relative path of file or directory.
-CSV_PATH = "C:\\Users\\VamsiKarnam\\Desktop\\-\\Personal Files\\ml\\openfilenet\\examples\\share_files"  # e.g. "C:\\Users\\me\\data\\my_data.csv"
+CSV_PATH = "path/to/your/dir/or/file"  # e.g. on windows "C:\\Users\\username\\data\\my_data.csv"
 
 ofn.share_files(CSV_PATH)
 
