@@ -28,7 +28,7 @@ Forget SMB, SFTP, FTP, NFS, SCP, HTTP file servers, shared folders, or network m
 ## Table of contents
 
 * [Intro & description](#openfilenet)
-* [Flowchart](#flowchart)
+* [Architecture](#architecture)
 * [Core modules](#openfilenet-modules)
 * [Framework](#framework)
 * [Encryption](#encryption-aes-256-gcm)
@@ -40,7 +40,7 @@ Forget SMB, SFTP, FTP, NFS, SCP, HTTP file servers, shared folders, or network m
 
 ---
 
-## Flowchart
+## Architecture
 
 ```mermaid
 flowchart LR
