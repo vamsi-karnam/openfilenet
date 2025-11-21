@@ -46,24 +46,20 @@ flowchart TD
 
 subgraph System-A
   P1[Openfilenet Peer]
-  A1[Announce on UDP Broadcast]
-  A2[Share Files on TCP]
-  A3[TCP File Server]
+  A1[Share Files on TCP]
+  A2[TCP File Server]
 end
 
 subgraph System-B
   P2[Openfilenet Peer]
-  B1[Listen for UDP Broadcast]
-  B2[Request files on TCP]
+  B1[Request files on TCP]
 end
 
-P1 -- "1" --> A1
-A1 -- "UDP Broadcast" --> P2
-P2 -- "2" --> B1
-B1 -- "UDP Reply" --> P1
+P1 -- "1. UDP Broadcast" --> P2
+P2 -- "2. UDP Reply" --> P1
 P1 -- "3. Announce Reply" --> P2
-P2 -- "4" --> B2 --> A3
-A2 --> A3 
+P2 -- "4" --> B1 --> A2
+A1 --> A2 
 
 ```
 
