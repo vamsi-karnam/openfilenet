@@ -222,7 +222,7 @@ If you don't use encryption, OpenFilenet has **zero external dependencies**.
 
 ## License / Author / Contact / Citation
 
-R'DASH (Robot Information Telemetry Transport Dashboard)  
+OpenFilenet
 Developed by **Vamsi Karnam**, 2025.  
 Released under the **Apache 2.0 License**.
 
