@@ -42,7 +42,7 @@ Forget SMB, SFTP, FTP, NFS, SCP, HTTP file servers, shared folders, or network m
 
 ## Architecture
 ```mermaid
-flowchart TD
+flowchart LR
 
 subgraph System-A
   P1[Openfilenet Peer]
