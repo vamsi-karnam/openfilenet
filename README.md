@@ -44,22 +44,18 @@ Forget SMB, SFTP, FTP, NFS, SCP, HTTP file servers, shared folders, or network m
 
 ```mermaid
 flowchart LR
-
-    subgraph PeerA["Peer A (Sender)"]
-        A1[share_files()] --> A2[Indexes files]
-        A3[UDP Broadcast every 1s]
-        A4[TCP Server: serves files]
-    end
-
-    subgraph PeerB["Peer B (Receiver)"]
-        B1[list_files()] --> B2[Discovers Peer A]
-        B3[get_file()] --> B4[Download/Process bytes in-memory]
-    end
-
-    A3 -- UDP announce --> B1
-    B1 -- UDP announce_reply --> A3
-
-    B3 -- TCP get_file --> A4
+subgraph PeerA["Peer A (Sender)"]
+A1[share_files()] --> A2[Indexes files]
+A3[UDP Broadcast every 1s]
+A4[TCP Server: serves files]
+end
+subgraph PeerB["Peer B (Receiver)"]
+B1[list_files()] --> B2[Discovers Peer A]
+B3[get_file()] --> B4[Download/Process bytes in-memory]
+end
+A3 -- UDP announce --> B1
+B1 -- UDP announce_reply --> A3
+B3 -- TCP get_file --> A4
 ```
 
 ---
