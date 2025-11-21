@@ -47,14 +47,14 @@ flowchart TD
 subgraph System-A
   P1[Openfilenet Peer]
   A1[UDP Broadcast Announce]
-  A2[Share Files]
+  A2[Share Files on TCP]
   A3[TCP File Server]
 end
 
 subgraph System-B
   P2[Openfilenet Peer]
   B1[Listen for UDP Broadcast]
-  B2[Connect to TCP and Get Files]
+  B2[Receive files on TCP]
 end
 
 P1 --> A1
