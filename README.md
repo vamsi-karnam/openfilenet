@@ -42,7 +42,7 @@ Forget SMB, SFTP, FTP, NFS, SCP, HTTP file servers, shared folders, or network m
 
 ## Architecture
 ```mermaid
-flowchart LR
+flowchart TD
 
 subgraph PeerA
   A0["Peer A (Sender)"]
