@@ -52,13 +52,13 @@ end
 
 subgraph System-B
   P2[Openfilenet Peer]
-  B1[Request files on TCP]
+  B1[Get files on TCP]
 end
 
 P1 -- "1. UDP Broadcast" --> P2
 P2 -- "2. UDP Reply" --> P1
 P1 -- "3. Announce Reply" --> P2
-P2 -- "4" --> B1 --> A2
+P2 -- "4. Request Files on TCP" --> A2 --> B1
 A1 --> A2 
 
 ```
