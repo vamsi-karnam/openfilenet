@@ -9,7 +9,7 @@ Public API:
     openfilenet.encrypt              # enable AES-256-GCM encryption, default False
     openfilenet.key                  # shared secret string for encryption (required if encrypt=True)
 
-    from openfilenet import share_files, list_files, get_file, add_peer
+example: from openfilenet import share_files, list_files, get_file, add_peer
 """
 
 from __future__ import annotations
@@ -308,7 +308,7 @@ def _start_tcp_server_thread() -> int:
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
     try:
-        sock.bind(("", tcp_port))  # 0 means OS chooses
+        sock.bind(("", tcp_port))  # 0 for random OS choice
         sock.listen()
     except OSError as e:
         _log(f"Failed to bind TCP server on port {tcp_port}: {e}")
