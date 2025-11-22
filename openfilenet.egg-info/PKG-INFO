@@ -1,0 +1,657 @@
+Metadata-Version: 2.4
+Name: openfilenet
+Version: 0.1.0
+Summary: LAN-native peer-to-peer file sharing API for Python. Remote files that feel local. Openfilenet abstracts away the file sharing protocols and makes it super easy to implement in-line.
+Author-email: Vamsi Karnam <saivamsi.karnam@gmail.com>
+License:                                  Apache License
+                                   Version 2.0, January 2004
+                                http://www.apache.org/licenses/
+        
+           TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+        
+           1. Definitions.
+        
+              "License" shall mean the terms and conditions for use, reproduction,
+              and distribution as defined by Sections 1 through 9 of this document.
+        
+              "Licensor" shall mean the copyright owner or entity authorized by
+              the copyright owner that is granting the License.
+        
+              "Legal Entity" shall mean the union of the acting entity and all
+              other entities that control, are controlled by, or are under common
+              control with that entity. For the purposes of this definition,
+              "control" means (i) the power, direct or indirect, to cause the
+              direction or management of such entity, whether by contract or
+              otherwise, or (ii) ownership of fifty percent (50%) or more of the
+              outstanding shares, or (iii) beneficial ownership of such entity.
+        
+              "You" (or "Your") shall mean an individual or Legal Entity
+              exercising permissions granted by this License.
+        
+              "Source" form shall mean the preferred form for making modifications,
+              including but not limited to software source code, documentation
+              source, and configuration files.
+        
+              "Object" form shall mean any form resulting from mechanical
+              transformation or translation of a Source form, including but
+              not limited to compiled object code, generated documentation,
+              and conversions to other media types.
+        
+              "Work" shall mean the work of authorship, whether in Source or
+              Object form, made available under the License, as indicated by a
+              copyright notice that is included in or attached to the work
+              (an example is provided in the Appendix below).
+        
+              "Derivative Works" shall mean any work, whether in Source or Object
+              form, that is based on (or derived from) the Work and for which the
+              editorial revisions, annotations, elaborations, or other modifications
+              represent, as a whole, an original work of authorship. For the purposes
+              of this License, Derivative Works shall not include works that remain
+              separable from, or merely link (or bind by name) to the interfaces of,
+              the Work and Derivative Works thereof.
+        
+              "Contribution" shall mean any work of authorship, including
+              the original version of the Work and any modifications or additions
+              to that Work or Derivative Works thereof, that is intentionally
+              submitted to Licensor for inclusion in the Work by the copyright owner
+              or by an individual or Legal Entity authorized to submit on behalf of
+              the copyright owner. For the purposes of this definition, "submitted"
+              means any form of electronic, verbal, or written communication sent
+              to the Licensor or its representatives, including but not limited to
+              communication on electronic mailing lists, source code control systems,
+              and issue tracking systems that are managed by, or on behalf of, the
+              Licensor for the purpose of discussing and improving the Work, but
+              excluding communication that is conspicuously marked or otherwise
+              designated in writing by the copyright owner as "Not a Contribution."
+        
+              "Contributor" shall mean Licensor and any individual or Legal Entity
+              on behalf of whom a Contribution has been received by Licensor and
+              subsequently incorporated within the Work.
+        
+           2. Grant of Copyright License. Subject to the terms and conditions of
+              this License, each Contributor hereby grants to You a perpetual,
+              worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+              copyright license to reproduce, prepare Derivative Works of,
+              publicly display, publicly perform, sublicense, and distribute the
+              Work and such Derivative Works in Source or Object form.
+        
+           3. Grant of Patent License. Subject to the terms and conditions of
+              this License, each Contributor hereby grants to You a perpetual,
+              worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+              (except as stated in this section) patent license to make, have made,
+              use, offer to sell, sell, import, and otherwise transfer the Work,
+              where such license applies only to those patent claims licensable
+              by such Contributor that are necessarily infringed by their
+              Contribution(s) alone or by combination of their Contribution(s)
+              with the Work to which such Contribution(s) was submitted. If You
+              institute patent litigation against any entity (including a
+              cross-claim or counterclaim in a lawsuit) alleging that the Work
+              or a Contribution incorporated within the Work constitutes direct
+              or contributory patent infringement, then any patent licenses
+              granted to You under this License for that Work shall terminate
+              as of the date such litigation is filed.
+        
+           4. Redistribution. You may reproduce and distribute copies of the
+              Work or Derivative Works thereof in any medium, with or without
+              modifications, and in Source or Object form, provided that You
+              meet the following conditions:
+        
+              (a) You must give any other recipients of the Work or
+                  Derivative Works a copy of this License; and
+        
+              (b) You must cause any modified files to carry prominent notices
+                  stating that You changed the files; and
+        
+              (c) You must retain, in the Source form of any Derivative Works
+                  that You distribute, all copyright, patent, trademark, and
+                  attribution notices from the Source form of the Work,
+                  excluding those notices that do not pertain to any part of
+                  the Derivative Works; and
+        
+              (d) If the Work includes a "NOTICE" text file as part of its
+                  distribution, then any Derivative Works that You distribute must
+                  include a readable copy of the attribution notices contained
+                  within such NOTICE file, excluding those notices that do not
+                  pertain to any part of the Derivative Works, in at least one
+                  of the following places: within a NOTICE text file distributed
+                  as part of the Derivative Works; within the Source form or
+                  documentation, if provided along with the Derivative Works; or,
+                  within a display generated by the Derivative Works, if and
+                  wherever such third-party notices normally appear. The contents
+                  of the NOTICE file are for informational purposes only and
+                  do not modify the License. You may add Your own attribution
+                  notices within Derivative Works that You distribute, alongside
+                  or as an addendum to the NOTICE text from the Work, provided
+                  that such additional attribution notices cannot be construed
+                  as modifying the License.
+        
+              You may add Your own copyright statement to Your modifications and
+              may provide additional or different license terms and conditions
+              for use, reproduction, or distribution of Your modifications, or
+              for any such Derivative Works as a whole, provided Your use,
+              reproduction, and distribution of the Work otherwise complies with
+              the conditions stated in this License.
+        
+           5. Submission of Contributions. Unless You explicitly state otherwise,
+              any Contribution intentionally submitted for inclusion in the Work
+              by You to the Licensor shall be under the terms and conditions of
+              this License, without any additional terms or conditions.
+              Notwithstanding the above, nothing herein shall supersede or modify
+              the terms of any separate license agreement you may have executed
+              with Licensor regarding such Contributions.
+        
+           6. Trademarks. This License does not grant permission to use the trade
+              names, trademarks, service marks, or product names of the Licensor,
+              except as required for reasonable and customary use in describing the
+              origin of the Work and reproducing the content of the NOTICE file.
+        
+           7. Disclaimer of Warranty. Unless required by applicable law or
+              agreed to in writing, Licensor provides the Work (and each
+              Contributor provides its Contributions) on an "AS IS" BASIS,
+              WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+              implied, including, without limitation, any warranties or conditions
+              of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+              PARTICULAR PURPOSE. You are solely responsible for determining the
+              appropriateness of using or redistributing the Work and assume any
+              risks associated with Your exercise of permissions under this License.
+        
+           8. Limitation of Liability. In no event and under no legal theory,
+              whether in tort (including negligence), contract, or otherwise,
+              unless required by applicable law (such as deliberate and grossly
+              negligent acts) or agreed to in writing, shall any Contributor be
+              liable to You for damages, including any direct, indirect, special,
+              incidental, or consequential damages of any character arising as a
+              result of this License or out of the use or inability to use the
+              Work (including but not limited to damages for loss of goodwill,
+              work stoppage, computer failure or malfunction, or any and all
+              other commercial damages or losses), even if such Contributor
+              has been advised of the possibility of such damages.
+        
+           9. Accepting Warranty or Additional Liability. While redistributing
+              the Work or Derivative Works thereof, You may choose to offer,
+              and charge a fee for, acceptance of support, warranty, indemnity,
+              or other liability obligations and/or rights consistent with this
+              License. However, in accepting such obligations, You may act only
+              on Your own behalf and on Your sole responsibility, not on behalf
+              of any other Contributor, and only if You agree to indemnify,
+              defend, and hold each Contributor harmless for any liability
+              incurred by, or claims asserted against, such Contributor by reason
+              of your accepting any such warranty or additional liability.
+        
+           END OF TERMS AND CONDITIONS
+        
+           APPENDIX: How to apply the Apache License to your work.
+        
+              To apply the Apache License to your work, attach the following
+              boilerplate notice, with the fields enclosed by brackets "[]"
+              replaced with your own identifying information. (Don't include
+              the brackets!)  The text should be enclosed in the appropriate
+              comment syntax for the file format. We also recommend that a
+              file or class name and description of purpose be included on the
+              same "printed page" as the copyright notice for easier
+              identification within third-party archives.
+        
+           Copyright [yyyy] [name of copyright owner]
+        
+           Licensed under the Apache License, Version 2.0 (the "License");
+           you may not use this file except in compliance with the License.
+           You may obtain a copy of the License at
+        
+               http://www.apache.org/licenses/LICENSE-2.0
+        
+           Unless required by applicable law or agreed to in writing, software
+           distributed under the License is distributed on an "AS IS" BASIS,
+           WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+           See the License for the specific language governing permissions and
+           limitations under the License.
+        
+Project-URL: Homepage, https://github.com/vamsi-karnam/openfilenet
+Project-URL: Repository, https://github.com/vamsi-karnam/openfilenet
+Project-URL: Issues, https://github.com/vamsi-karnam/openfilenet/issues
+Keywords: p2p,lan,networking,filesharing,api,developer-tools,file share
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Network
+Classifier: Topic :: Utilities
+Classifier: Topic :: Software Development :: Libraries
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+License-File: NOTICE
+Provides-Extra: cryptography
+Requires-Dist: cryptography>=42.0.0; extra == "cryptography"
+Dynamic: license-file
+
+# OpenFilenet
+
+**Author:** Vamsi Karnam
+
+**License:** Apache License 2.0
+
+*“ Openfilenet is an open-source, modern, LAN-native, cross-platform, P2P file share for real programming workflows - developed and maintained by [Vamsi Karnam](https://www.linkedin.com/in/saivamsikarnam/) - Distributed file access made stupidly simple.”*
+
+---
+
+**OpenFilenet**  lets your code access files on other machines **as if they were local**, using a tiny, dependency-free P2P protocol (optionally secured with AES-256-GCM) using a lightweight, zero-config **peer-to-peer file sharing API** designed for **code runtimes** to be as developer friendly as possible.
+
+Forget SMB, SFTP, FTP, SCP, HTTP file servers, shared folders, or network mounts. Openfilenet abstracts away the file share protocol and makes it super easy to implement.
+
+**Features:**
+* Works over local networks / Wi-Fi / Ethernet / VPN
+* Cross-platform (Windows, Linux, macOS, Raspberry Pi)
+* No servers, no Daemons, no config files
+* File fetching in *memory* (no need to write temp files)
+* Async discovery via UDP broadcast
+* Encrypted transfer option
+* Ideal for ML pipelines, sensors, robotics, distributed data collection, edge devices, experiments
+* Simple API: `share_files`, `list_files`, `get_file`, `add_peer`
+
+- OpenFilenet abstracts away networking so *your code* can access remote files with zero overhead.
+
+---
+
+## Table of contents
+
+* [Intro & description](#openfilenet)
+* [Architecture](#architecture)
+* [Core modules](#openfilenet-modules)
+* [Framework](#framework)
+* [Encryption](#encryption-aes-256-gcm)
+* [Language Support](#language-support)
+* [Installation](#installation)
+* [Requirements](#requirements)
+* [Example applications](#example-applications)
+* [License / Author / Contact](#license--author--contact--citation)
+* [Usage Examples](#appendix)
+
+---
+
+## Architecture
+```mermaid
+flowchart LR
+
+subgraph System-A
+  P1[Openfilenet Peer]
+  A1[Share Files on TCP]
+  A2[TCP File Server]
+end
+
+subgraph System-B
+  P2[Openfilenet Peer]
+  B1[Get files on TCP]
+end
+
+P1 -- "1. UDP Broadcast" --> P2
+P2 -- "2. UDP Reply" --> P1
+P1 -- "3. Announce Reply" --> P2
+P2 -- "4. Request Files on TCP" --> A2 --> B1
+A1 --> A2 
+
+```
+
+---
+
+## Openfilenet Modules
+
+**Core config and modules outline**:
+```python
+# Modules:
+openfilenet.share_files(path_or_list)
+openfilenet.list_files()
+openfilenet.get_file(peer_id, path, dest=None)
+openfilenet.add_peer(host, port)
+# Config:
+openfilenet.token = "my-room"
+openfilenet.encrypt = True/False
+openfilenet.key = "secret"
+openfilenet.port.udp_discovery = 51230
+openfilenet.port.tcp_server = 0
+```
+
+* For more detail, see [function reference doc](https://github.com/vamsi-karnam/openfilenet/tree/main/docs)
+
+---
+
+
+## Framework
+
+OpenFilenet uses a **true peer-to-peer model**. Every instance is both:
+
+1. **A broadcast server** (UDP discovery)
+2. **A file server** (TCP file provider)
+3. **A file client** (TCP file consumer)
+
+### 1. Discovery (broadcast)
+
+**Description**: Every peer periodically (*default: every 1 sec*) broadcasts a packet over UDP:
+**Default protocol**: UDP
+**Default port**: 51230
+
+```json
+{
+  "type": "announce",
+  "token": "<token>",
+  "peer_id": "...",
+  "port": <tcp_port>
+}
+```
+- Any peers listening on the same UDP port receive this broadcast and record the (IP addr, TCP port) of the sender.
+
+> Sometimes discovery can be asymmetric (e.g., some routers drop broadcast packets), OpenFilenet sends “***unicast announce replies***” so both sides learn about each other. The function `add_peer()` exists as a fallback for unusual networks.
+
+### 2. File Index
+
+**Description**: A peer who wants to share the files/directory calls:
+```python
+share_files("/path/to/myfile.txt")
+share_files("/path/to/myfolder")
+share_files(["/path/to/a", "/path/to/b"])
+```
+- OpenFilenet can share a single file or recursively walk and index all subdirectories/files in the directory.
+- Other peers can retrieve this index via `list_files()`.
+
+### 3. File Transfer
+
+**Description**: A peer who wants to get the shared files/directory listing calls:
+```python
+list_files() # to list all files being served by all peers using the same token
+get_file(peer_id, path)
+```
+**Default protocol**: TCP
+**Default port**: Ephemeral/Random
+
+- Requests the file to download.
+- Receives plaintext or AES-256-GCM encrypted bytes.
+
+This enables processing remote files in-memory without saving to local disk.
+
+> `list_files()` returns a merged list of files from **all discovered peers**. Each entry includes a `peer_id` so you know which peer owns which file.
+
+---
+
+## Encryption (AES-256-GCM)
+
+OpenFilenet includes optional encryption using the industry-standard AEAD cipher suite:
+
+* **AES-256-GCM**
+* 12-byte random nonce
+* Authenticated Additional Data (AAD) = token
+* Integrity-protected ciphertext
+
+### How to enable:
+
+```python
+openfilenet.encrypt = True
+openfilenet.key = "my_secret_key"
+```
+
+In the background:
+
+* `key` → SHA-256 → 32-byte AES key.
+* A random nonce is generated per file: `os.urandom(12)`.
+* File bytes are encrypted fully into memory and then sent.
+
+If `encrypt=True`, both peers *must* set the **same key**.
+
+Encryption affects only file transfer, not UDP discovery or metadata.
+
+---
+
+
+## Language support
+
+| Language | Status      |
+| -------- | ----------- |
+| Python   | Implemented |
+| C        | Planned     |
+| C++      | Planned     |
+
+---
+
+## Installation
+
+### Option 1 - PyPI release (recommended usage)
+
+```bash
+pip install openfilenet
+```
+
+### Option 2 - Local clone (recommended for testing and development)
+
+```bash
+git clone https://github.com/vamsi-karnam/openfilenet.git
+cd openfilenet
+pip install -r requirements.txt
+```
+
+### Requirements
+
+Only required **if encryption is enabled**:
+
+```
+cryptography
+```
+
+If you don't use encryption, OpenFilenet has **zero external dependencies**.
+
+---
+
+## Example applications
+
+* Distributed ML dataset sharing without NFS/Samba.
+* Python workers processing remote sensor logs.
+* Raspberry Pi cluster exchanging data dynamically.
+* Local LLM workers sharing checkpoints.
+* “Ad-hoc cluster mode” for laptops on a network.
+* Edge AI pipelines that pass data P2P.
+
+---
+
+## License / Author / Contact / Citation
+
+OpenFilenet
+Developed by **Vamsi Karnam**, 2025.  
+Released under the **Apache 2.0 License**.
+
+If you use this software in any of your works, please cite:
+> Karnam, S. V. (2025). *Openfilenet: an open-source, modern, LAN-native, cross-platform, P2P file sharing for real programming workflows. *
+
+For contact, collaborations, bug reports, or business, reach out via saivamsi.karnam@gmail.com.
+
+Author Social: [LinkedIn](https://www.linkedin.com/in/saivamsikarnam/)
+
+OpenFilenet is open-source and contributions are welcome.
+
+---
+
+# Appendix
+
+
+
+## Usage examples
+
+Usecase: Run openfilenet to share, and receive and process across two peers connected over LAN.
+
+### Peer 1
+1. Install openfilenet
+
+```python
+pip install openfilenet
+```
+
+2. Example peer_share.py
+
+```python
+"""
+Peer A: Share a local CSV file via OpenFilenet to all the peers.
+"""
+import time
+import openfilenet as ofn
+
+# -------------------------------------------------------------------
+# openfilenet configuration
+# -------------------------------------------------------------------
+# Room / namespace. All peers in this room / namespace can see each other on the network.
+ofn.token = "demo"
+
+# Optional: Enable debug
+# ofn.debug = True
+
+# Optional: override UDP discovery port (default: 51230)
+# ofn.port.udp_discovery = 51230
+
+# Optional: force a specific TCP server port (default: 0 = OS chooses)
+# ofn.port.tcp_server = 50000
+
+# Optional: enable AES256 encryption (AES-256-GCM) for get_file() transfers
+# If you enable this, all peers must set the SAME key and have the `cryptography` package installed.
+ofn.encrypt = True
+ofn.key = "secret"
+
+# -------------------------------------------------------------------
+# Share a file or directory on the P2P network
+# -------------------------------------------------------------------
+# Change this to the absolute or relative path of file or directory.
+CSV_PATH = "path/to/your/dir/or/file"  # e.g. on windows "C:\\Users\\username\\data\\my_data.csv"
+
+ofn.share_files(CSV_PATH)
+
+print(f"Sharing CSV file: {CSV_PATH}")
+print("Peers using the same token: ", ofn.token," can now discover and fetch the shared file(s).")
+print("Press Ctrl+C to exit.")
+
+# Keep the process alive so the TCP server and discovery keep running
+while True:
+    time.sleep(10)
+```
+
+### Peer 2
+1. Install openfilenet
+
+```python
+pip install openfilenet
+```
+
+2. Example peer_receive.py
+
+```python
+"""
+Peer B: Discover a remote CSV file via OpenFilenet and process it in memory.
+"""
+
+import time
+import io
+import csv
+from pathlib import Path
+
+import openfilenet as ofn
+
+# ---------------------------------------------------------------------------
+# openfilenet configuration
+# ---------------------------------------------------------------------------
+
+# Must match the token used on the sharing peer.
+ofn.token = "demo"
+
+# Enable debug logs to see discovery and connections.
+# ofn.debug = True
+
+# Optional: enable encryption (must match sharer if used).
+ofn.encrypt = True
+ofn.key = "secret"
+
+
+# ---------------------------------------------------------------------------
+# Wait for files to appear on the P2P network
+# ---------------------------------------------------------------------------
+
+def wait_for_remote_files(timeout_seconds: int = 10, poll_interval: float = 1.0):
+    """
+    Poll openfilenet.list_files() until we see at least one file
+    or until timeout is reached.
+
+    Discovery is asynchronous, so this ensures we see peers that come online.
+    """
+    start = time.time()
+    while time.time() - start < timeout_seconds:
+        files = ofn.list_files()
+        if files:
+            return files
+        print("No remote files yet, waiting...")
+        time.sleep(poll_interval)
+    return []
+
+
+print("Looking for remote files...")
+
+files = wait_for_remote_files(timeout_seconds=10)
+
+if not files:
+    print(
+        "No remote files found."
+        f"Is the sharing peer running and using token {ofn.token!r}?"
+    )
+    raise SystemExit
+
+print("\nDiscovered remote files:")
+for f in files:
+    print(f'  peer={f["peer_id"]}  path={f["path"]}  size={f["size"]}')
+print()
+
+
+# ---------------------------------------------------------------------------
+# Fetch and process the file (CSV) in memory
+# ---------------------------------------------------------------------------
+
+# fetch the file the sharer is exposing. (use a loop for multiple files)
+fmeta = files[0]
+peer_id = fmeta["peer_id"]
+remote_path = fmeta["path"]
+
+print(f"Fetching remote CSV from peer={peer_id} path={remote_path}")
+
+# Get file bytes IN MEMORY (no temp files).
+data = ofn.get_file(peer_id, remote_path)  # dest=None => returns bytes
+
+# Decode bytes into text (UTF-8 is common for CSV).
+text = data.decode("utf-8", errors="replace")
+
+# Parse CSV using Python's built-in CSV reader.
+buf = io.StringIO(text)
+reader = csv.reader(buf)
+
+try:
+    header = next(reader)   # first row = column names
+except StopIteration:
+    print("The CSV file appears to be empty.")
+    raise SystemExit
+
+# Count remaining rows
+row_count = sum(1 for _ in reader)
+
+print("\nCSV metadata:")
+print(f"  Columns ({len(header)}): {header}")
+print(f"  Rows: {row_count}")
+print(f"  Dimensions: {row_count} rows × {len(header)} columns\n")
+
+
+# ---------------------------------------------------------------------------
+# Additionally plug in your own processing logic
+# ---------------------------------------------------------------------------
+# For example:
+#   - load into pandas
+#   - feed into a model
+#   - compute statistics
+#   - filter rows, etc.
+#
+# Example:
+#
+# import pandas as pd
+# buf.seek(0)    # rewind to beginning
+# df = pd.read_csv(buf)
+# print(df.head())
+```
+---
+> *"Data should empower, not overwhelm"*

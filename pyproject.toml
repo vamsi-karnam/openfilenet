@@ -18,9 +18,12 @@ classifiers = [
     "Programming Language :: Python :: 3 :: Only",
     "License :: OSI Approved :: Apache Software License",
     "Operating System :: OS Independent",
-    "Topic :: Network",
+    "Topic :: System :: Networking",
+    "Topic :: System :: Distributed Computing",
+    "Topic :: Internet",
     "Topic :: Utilities",
-    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Intended Audience :: Developers"
 ]
 
 [project.optional-dependencies]

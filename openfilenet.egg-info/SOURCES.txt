@@ -1,0 +1,10 @@
+LICENSE
+NOTICE
+README.md
+pyproject.toml
+openfilenet/__init__.py
+openfilenet.egg-info/PKG-INFO
+openfilenet.egg-info/SOURCES.txt
+openfilenet.egg-info/dependency_links.txt
+openfilenet.egg-info/requires.txt
+openfilenet.egg-info/top_level.txt
