@@ -253,6 +253,7 @@ Usecase: Run openfilenet to share, and receive and process across two peers conn
 
 ```python
 pip install openfilenet
+pip install cryptography
 ```
 
 2. Example peer_share.py
@@ -306,6 +307,7 @@ while True:
 
 ```python
 pip install openfilenet
+pip install cryptography
 ```
 
 2. Example peer_receive.py
