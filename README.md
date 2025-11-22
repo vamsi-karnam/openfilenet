@@ -38,7 +38,7 @@ Forget SMB, SFTP, FTP, SCP, HTTP file servers, shared folders, or network mounts
 * [Requirements](#requirements)
 * [Example applications](#example-applications)
 * [License / Author / Contact](#license--author--contact--citation)
-* [Appendix](#appendix)
+* [Usage Examples](#appendix)
 
 ---
 
