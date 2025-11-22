@@ -4,3 +4,7 @@ __pycache__/
 *.pyo
 venv/
 .env/
+*.toml
+pip-readme.md
+openfilenet.egg-info/
+dist/

@@ -1,8 +1,8 @@
 [project]
 name = "openfilenet"
-version = "0.1.0"
-description = "LAN-native peer-to-peer file sharing API for Python. Remote files that feel local. Openfilenet abstracts away the file sharing protocols and makes it super easy to implement in-line."
-readme = "README.md"
+version = "0.1.1"
+description = "OpenFilenet is a lightweight, zero-config peer-to-peer file sharing library designed to abstract away file sharing across code runtimes."
+readme = { file = "pip-readme.md", content-type = "text/markdown" }
 authors = [
     { name = "Vamsi Karnam", email = "saivamsi.karnam@gmail.com" }
 ]
@@ -13,6 +13,7 @@ requires-python = ">=3.8"
 dependencies = []
 
 keywords = ["p2p", "lan", "networking", "filesharing", "api", "developer-tools", "file share"]
+
 classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",

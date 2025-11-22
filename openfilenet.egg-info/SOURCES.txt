@@ -1,6 +1,7 @@
 LICENSE
 NOTICE
 README.md
+pip-readme.md
 pyproject.toml
 openfilenet/__init__.py
 openfilenet.egg-info/PKG-INFO

@@ -8,9 +8,9 @@
 
 ---
 
-**OpenFilenet**  lets your code access files on other machines **as if they were local**, using a tiny, dependency-free P2P protocol (optionally secured with AES-256-GCM) using a lightweight, zero-config **peer-to-peer file sharing API** designed for **code runtimes** to be as developer friendly as possible.
+**OpenFilenet**  lets your code access files on other machines **as if they were local**, using a tiny, dependency-free P2P protocol (optionally secured with AES-256-GCM) using a lightweight, zero-config **peer-to-peer file sharing library** designed for **code runtimes** to be as developer friendly as possible.
 
-Forget SMB, SFTP, FTP, SCP, HTTP file servers, shared folders, or network mounts. Openfilenet abstracts away the file share protocol and makes it super easy to implement.
+Forget SMB, SFTP, FTP, SCP, HTTP file servers, shared folders, or network mounts. Openfilenet abstracts away the file sharing protocol and makes it super easy to implement.
 
 **Features:**
 * Works over local networks / Wi-Fi / Ethernet / VPN
@@ -20,7 +20,7 @@ Forget SMB, SFTP, FTP, SCP, HTTP file servers, shared folders, or network mounts
 * Async discovery via UDP broadcast
 * Encrypted transfer option
 * Ideal for ML pipelines, sensors, robotics, distributed data collection, edge devices, experiments
-* Simple API: `share_files`, `list_files`, `get_file`, `add_peer`
+* Simple library modules: `share_files`, `list_files`, `get_file`, `add_peer`
 
 - OpenFilenet abstracts away networking so *your code* can access remote files with zero overhead.
 
@@ -77,7 +77,7 @@ openfilenet.list_files()
 openfilenet.get_file(peer_id, path, dest=None)
 openfilenet.add_peer(host, port)
 # Config:
-openfilenet.token = "my-room"
+openfilenet.token = "mytoken"
 openfilenet.encrypt = True/False
 openfilenet.key = "secret"
 openfilenet.port.udp_discovery = 51230
