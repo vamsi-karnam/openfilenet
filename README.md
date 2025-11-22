@@ -16,7 +16,7 @@ Forget SMB, SFTP, FTP, SCP, HTTP file servers, shared folders, or network mounts
 * Works over local networks / Wi-Fi / Ethernet / VPN
 * Cross-platform (Windows, Linux, macOS, Raspberry Pi)
 * No servers, no Daemons, no config files
-* File fetching in *memory* (no need to write temp files)
+* File fetching in *memory* (no need to write to temp/local files, be wary of memory however)
 * Async discovery via UDP broadcast
 * Encrypted transfer option
 * Ideal for ML pipelines, sensors, robotics, distributed data collection, edge devices, experiments
