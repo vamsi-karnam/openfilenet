@@ -10,8 +10,9 @@
 
 **OpenFilenet**  lets your code access files on other machines **as if they were local**, using a tiny, dependency-free P2P protocol (optionally secured with AES-256-GCM) using a lightweight, zero-config **peer-to-peer file sharing API** designed for **code runtimes** to be as developer friendly as possible.
 
-Forget SMB, SFTP, FTP, NFS, SCP, HTTP file servers, shared folders, or network mounts.
+Forget SMB, SFTP, FTP, SCP, HTTP file servers, shared folders, or network mounts. Openfilenet abstracts away the file share protocol and makes it super easy to implement.
 
+**Features:**
 * Works over local networks / Wi-Fi / Ethernet / VPN
 * Cross-platform (Windows, Linux, macOS, Raspberry Pi)
 * No servers, no Daemons, no config files
