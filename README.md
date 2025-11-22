@@ -38,6 +38,7 @@ Forget SMB, SFTP, FTP, SCP, HTTP file servers, shared folders, or network mounts
 * [Requirements](#requirements)
 * [Example applications](#example-applications)
 * [License / Author / Contact](#license--author--contact--citation)
+* [Appendix](#appendix)
 
 ---
 
@@ -221,4 +222,190 @@ OpenFilenet is open-source and contributions are welcome.
 
 ---
 
+# Appendix
+
+## Usage examples
+
+Usecase: Run openfilenet to share, and receive and process across two peers connected over LAN.
+
+### Peer 1
+1. Install openfilenet
+
+```python
+pip install openfilenet
+```
+
+2. Example peer_share.py
+
+```python
+"""
+Peer A: Share a local CSV file via OpenFilenet to all the peers.
+"""
+import time
+import openfilenet as ofn
+
+# -------------------------------------------------------------------
+# openfilenet configuration
+# -------------------------------------------------------------------
+# Room / namespace. All peers in this room / namespace can see each other on the network.
+ofn.token = "demo"
+
+# Optional: Enable debug
+# ofn.debug = True
+
+# Optional: override UDP discovery port (default: 51230)
+# ofn.port.udp_discovery = 51230
+
+# Optional: force a specific TCP server port (default: 0 = OS chooses)
+# ofn.port.tcp_server = 50000
+
+# Optional: enable AES256 encryption (AES-256-GCM) for get_file() transfers
+# If you enable this, all peers must set the SAME key and have the `cryptography` package installed.
+ofn.encrypt = True
+ofn.key = "secret"
+
+# -------------------------------------------------------------------
+# Share a file or directory on the P2P network
+# -------------------------------------------------------------------
+# Change this to the absolute or relative path of file or directory.
+CSV_PATH = "path/to/your/dir/or/file"  # e.g. on windows "C:\\Users\\username\\data\\my_data.csv"
+
+ofn.share_files(CSV_PATH)
+
+print(f"Sharing CSV file: {CSV_PATH}")
+print("Peers using the same token: ", ofn.token," can now discover and fetch the shared file(s).")
+print("Press Ctrl+C to exit.")
+
+# Keep the process alive so the TCP server and discovery keep running
+while True:
+    time.sleep(10)
+```
+
+### Peer 2
+1. Install openfilenet
+
+```python
+pip install openfilenet
+```
+
+2. Example peer_receive.py
+
+```python
+"""
+Peer B: Discover a remote CSV file via OpenFilenet and process it in memory.
+"""
+
+import time
+import io
+import csv
+from pathlib import Path
+
+import openfilenet as ofn
+
+# ---------------------------------------------------------------------------
+# openfilenet configuration
+# ---------------------------------------------------------------------------
+
+# Must match the token used on the sharing peer.
+ofn.token = "demo"
+
+# Enable debug logs to see discovery and connections.
+# ofn.debug = True
+
+# Optional: enable encryption (must match sharer if used).
+ofn.encrypt = True
+ofn.key = "secret"
+
+
+# ---------------------------------------------------------------------------
+# Wait for files to appear on the P2P network
+# ---------------------------------------------------------------------------
+
+def wait_for_remote_files(timeout_seconds: int = 10, poll_interval: float = 1.0):
+    """
+    Poll openfilenet.list_files() until we see at least one file
+    or until timeout is reached.
+
+    Discovery is asynchronous, so this ensures we see peers that come online.
+    """
+    start = time.time()
+    while time.time() - start < timeout_seconds:
+        files = ofn.list_files()
+        if files:
+            return files
+        print("No remote files yet, waiting...")
+        time.sleep(poll_interval)
+    return []
+
+
+print("Looking for remote files...")
+
+files = wait_for_remote_files(timeout_seconds=10)
+
+if not files:
+    print(
+        "No remote files found."
+        f"Is the sharing peer running and using token {ofn.token!r}?"
+    )
+    raise SystemExit
+
+print("\nDiscovered remote files:")
+for f in files:
+    print(f'  peer={f["peer_id"]}  path={f["path"]}  size={f["size"]}')
+print()
+
+
+# ---------------------------------------------------------------------------
+# Fetch and process the file (CSV) in memory
+# ---------------------------------------------------------------------------
+
+# fetch the file the sharer is exposing. (use a loop for multiple files)
+fmeta = files[0]
+peer_id = fmeta["peer_id"]
+remote_path = fmeta["path"]
+
+print(f"Fetching remote CSV from peer={peer_id} path={remote_path}")
+
+# Get file bytes IN MEMORY (no temp files).
+data = ofn.get_file(peer_id, remote_path)  # dest=None => returns bytes
+
+# Decode bytes into text (UTF-8 is common for CSV).
+text = data.decode("utf-8", errors="replace")
+
+# Parse CSV using Python's built-in CSV reader.
+buf = io.StringIO(text)
+reader = csv.reader(buf)
+
+try:
+    header = next(reader)   # first row = column names
+except StopIteration:
+    print("The CSV file appears to be empty.")
+    raise SystemExit
+
+# Count remaining rows
+row_count = sum(1 for _ in reader)
+
+print("\nCSV metadata:")
+print(f"  Columns ({len(header)}): {header}")
+print(f"  Rows: {row_count}")
+print(f"  Dimensions: {row_count} rows × {len(header)} columns\n")
+
+
+# ---------------------------------------------------------------------------
+# Additionally plug in your own processing logic
+# ---------------------------------------------------------------------------
+# For example:
+#   - load into pandas
+#   - feed into a model
+#   - compute statistics
+#   - filter rows, etc.
+#
+# Example:
+#
+# import pandas as pd
+# buf.seek(0)    # rewind to beginning
+# df = pd.read_csv(buf)
+# print(df.head())
+```
+---
 > *"Data should empower, not overwhelm"*
