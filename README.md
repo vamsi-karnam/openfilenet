@@ -68,7 +68,23 @@ A1 --> A2
 ---
 
 ## Openfilenet Modules
-For modules see [function reference doc](https://github.com/vamsi-karnam/openfilenet/tree/main/docs)
+
+**Core config and modules outline**:
+```python
+# Modules:
+openfilenet.share_files(path_or_list)
+openfilenet.list_files()
+openfilenet.get_file(peer_id, path, dest=None)
+openfilenet.add_peer(host, port)
+# Config:
+openfilenet.token = "my-room"
+openfilenet.encrypt = True/False
+openfilenet.key = "secret"
+openfilenet.port.udp_discovery = 51230
+openfilenet.port.tcp_server = 0
+```
+
+* For more detail, see [function reference doc](https://github.com/vamsi-karnam/openfilenet/tree/main/docs)
 
 ---
 
@@ -107,7 +123,7 @@ share_files("/path/to/myfile.txt")
 share_files("/path/to/myfolder")
 share_files(["/path/to/a", "/path/to/b"])
 ```
-- OpenFilenet can share a single file or recursively index all files in the directory.
+- OpenFilenet can share a single file or recursively walk and index all subdirectories/files in the directory.
 - Other peers can retrieve this index via `list_files()`.
 
 ### 3. File Transfer
@@ -124,6 +140,8 @@ get_file(peer_id, path)
 - Receives plaintext or AES-256-GCM encrypted bytes.
 
 This enables processing remote files in-memory without saving to local disk.
+
+> `list_files()` returns a merged list of files from **all discovered peers**. Each entry includes a `peer_id` so you know which peer owns which file.
 
 ---
 
@@ -223,6 +241,8 @@ OpenFilenet is open-source and contributions are welcome.
 ---
 
 # Appendix
+
+
 
 ## Usage examples
 
